@@ -40,5 +40,10 @@
         "{workspaceRoot}/eslint.config.js"
       ]
     }
+  },
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
   }
 }

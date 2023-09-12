@@ -1,0 +1,51 @@
+{
+  "name": "dsfm-ui",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "dsfm-ui/src",
+  "prefix": "lib",
+  "tags": ["dsfm-ui"],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "dsfm-ui/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "dsfm-ui/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "dsfm-ui/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "dsfm-ui/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "dsfm-ui/**/*.ts",
+          "dsfm-ui/**/*.html",
+          "dsfm-ui/package.json"
+        ]
+      }
+    }
+  }
+}
